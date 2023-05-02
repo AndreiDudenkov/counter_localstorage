@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import {Counter} from './Components/Counter';
+import {Setter} from './Components/Setter';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [minSetValue, setMinSetValue] = useState<number>(0)
+    const [maxSetValue, setMaxSetValue] = useState<number>(0)
+    const [minValue, setMinValue] = useState<number>(minSetValue)
+    const [maxValue, setMaxValue] = useState<number>(minSetValue)
+
+
+    return (
+        <div className="App">
+            <Counter minSetValue={minSetValue}
+                     maxSetValue={maxSetValue}
+                     minValue={minValue}
+                     maxValue={maxValue}
+            />
+
+            <Setter
+                setMin={setMinSetValue}
+                setMax={setMaxSetValue}
+                setMinValue={setMinValue}
+                setMaxValue={setMaxValue}
+            />
+        </div>
+    );
 }
 
 export default App;
