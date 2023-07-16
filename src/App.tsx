@@ -4,29 +4,38 @@ import {Counter} from './Components/Counter';
 import {Setter} from './Components/Setter';
 
 
-function App() {
-    const [minSetValue, setMinSetValue] = useState<number>(0)
-    const [maxSetValue, setMaxSetValue] = useState<number>(0)
-    const [minValue, setMinValue] = useState<number>(minSetValue)
-    const [maxValue, setMaxValue] = useState<number>(minSetValue)
+export const App = () =>{
 
+
+    const [minValueForCounter, setMinValueForCounter] = useState<number>(0)
+    const [maxValueForCounter, setMaxValueForCounter] = useState<number>(0)
+
+    const valueMinAsString = localStorage.getItem('counterMinInputValue')
+    const receivedLocalMinValue = valueMinAsString && JSON.parse(valueMinAsString)
+
+    const valueMaxAsString = localStorage.getItem('counterMaxInputValue')
+    const receivedLocalMaxValue = valueMaxAsString && JSON.parse(valueMaxAsString)
+
+    useEffect(()=>{
+        setMinValueForCounter(receivedLocalMinValue)
+        setMaxValueForCounter(receivedLocalMaxValue)
+    }, [])
 
     return (
         <div className="App">
-            <Counter minSetValue={minSetValue}
-                     maxSetValue={maxSetValue}
-                     minValue={minValue}
-                     maxValue={maxValue}
+
+            <Counter
+                minValueForCounter={minValueForCounter}
+                maxValueForCounter={maxValueForCounter}
+            />
+            <Setter
+                setMinValueForCounter={setMinValueForCounter}
+                setMaxValueForCounter={setMaxValueForCounter}
             />
 
-            <Setter
-                setMin={setMinSetValue}
-                setMax={setMaxSetValue}
-                setMinValue={setMinValue}
-                setMaxValue={setMaxValue}
-            />
+
         </div>
     );
 }
 
-export default App;
+

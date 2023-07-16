@@ -1,40 +1,41 @@
-import React, {ChangeEvent, FC, useEffect, useState, useSyncExternalStore} from 'react';
-import {SuperInput} from './SuperInput';
+import React, {useEffect, useState} from 'react';
+
 import {SuperButton} from './SuperButton';
+import {useSelector} from 'react-redux';
+import {AppRootStateType} from '../BLL/store';
 
 type CounterType = {
-    minSetValue: number
-    maxSetValue: number
-    minValue:number
-    maxValue:number
+    minValueForCounter: number
+    maxValueForCounter: number
 }
 
-export const Counter: React.FC<CounterType> = ({minSetValue, maxSetValue,minValue,maxValue}) => {
-   const [currentValue, setCurrentValue] = useState<number>(minValue)
+export const Counter: React.FC<CounterType> = ({minValueForCounter, maxValueForCounter}) => {
+
+    const [counterCurrentValue, setCounterCurrentValue] = useState<number>(minValueForCounter)
+    const storeCount = useSelector<AppRootStateType, number>(state => state.counter.value)
 
     useEffect(() => {
-        setCurrentValue(minValue)
-    }, [minValue])
-
+        setCounterCurrentValue(minValueForCounter)
+    }, [minValueForCounter])
 
 
     const resetOnclickHandler = () => {
-        setCurrentValue(0)
+        setCounterCurrentValue(minValueForCounter)
     }
 
 
-
     const incOnclickHandler = () => {
-        currentValue < maxValue
-            ? setCurrentValue(currentValue + 1)
-            : null
-
+        setCounterCurrentValue(
+            counterCurrentValue < maxValueForCounter
+                ? counterCurrentValue + 1
+                : counterCurrentValue
+        )
     }
 
     return (
         <div className={'counter'}>
             <div className={'count'}>
-                {currentValue}
+                {counterCurrentValue}
             </div>
 
             <div className={'buttons'}>

@@ -1,30 +1,43 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {SuperButton} from './SuperButton';
 import {SuperInput} from './SuperInput';
 
 type SetterType = {
-    setMin: (value: number) => void
-    setMax: (value: number) => void
-    setMinValue: (value:number) => void
-    setMaxValue: (value:number) => void
+    // setMin: (value: number) => void
+    // setMax: (value: number) => void
+    setMinValueForCounter: (value:number) => void
+    setMaxValueForCounter: (value:number) => void
 };
 
-export const Setter: React.FC<SetterType> = ({setMin, setMax, setMinValue, setMaxValue}) => {
-    const [maxInputValue, setMaxInputValue] = useState<number>(5)
+export const Setter: React.FC<SetterType> = ({ setMinValueForCounter, setMaxValueForCounter}) => {
+    const [maxInputValue, setMaxInputValue] = useState<number>(0)
     const [minInputValue, setMinInputValue] = useState<number>(0)
+
+    const valueMinAsString = localStorage.getItem('counterMinInputValue')
+    const receivedLocalMinValue = valueMinAsString && JSON.parse(valueMinAsString)
+
+    const valueMaxAsString = localStorage.getItem('counterMaxInputValue')
+    const receivedLocalMaxValue = valueMaxAsString && JSON.parse(valueMaxAsString)
+
+    useEffect(()=>{
+        setMinInputValue(receivedLocalMinValue)
+        setMaxInputValue(receivedLocalMaxValue)
+    }, [])
 
 
     const onChangeMaxHandler = (value: number) => {
         setMaxInputValue(value)
-        setMax(value)
+
     }
     const onChangeMinHandler = (value: number) => {
         setMinInputValue(value)
-        setMin(value)
+
     }
     const setOnclickHandler = () => {
-        setMinValue(minInputValue)
-        setMaxValue(maxInputValue)
+        setMinValueForCounter(minInputValue)
+        setMaxValueForCounter(maxInputValue)
+        localStorage.setItem('counterMinInputValue', JSON.stringify(minInputValue))
+        localStorage.setItem('counterMaxInputValue', JSON.stringify(maxInputValue))
     }
     return (
 
