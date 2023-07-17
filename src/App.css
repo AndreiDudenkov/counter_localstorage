@@ -1,48 +1,49 @@
-.App {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 400px;
-    width: 1200px;
+/*.App {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    height: 400px;*/
+/*    width: 1200px;*/
+/*    background-color: springgreen;*/
 
 
-}
+/*}*/
 
-.counter {
-    height:200px;
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    background-color: red;
-}
-.count{
-    height: 140px;
-    width: 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: aqua;
-}
-.buttons {
-    height: 60px;
-    width: 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: darkslateblue;
-}
+/*.counter {*/
+/*    height:200px;*/
+/*    width: 400px;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    margin: 10px;*/
+/*    background-color: red;*/
+/*}*/
+/*.count{*/
+/*    height: 140px;*/
+/*    width: 350px;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    background-color: aqua;*/
+/*}*/
+/*.buttons {*/
+/*    height: 60px;*/
+/*    width: 350px;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    background-color: darkslateblue;*/
+/*}*/
 
-.set {
-    height:200px;
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    background-color: lightskyblue;
-}
+/*.set {*/
+/*    height:200px;*/
+/*    width: 400px;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    margin: 10px;*/
+/*    background-color: lightskyblue;*/
+/*}*/
 
